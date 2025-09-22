@@ -1,0 +1,29 @@
+[Unit]
+Description=DHT11 Temperature and Humidity Monitor
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=picam
+Group=picam
+WorkingDirectory=/home/picam/dht11new
+ExecStart=/usr/bin/python3 /home/picam/dht11new/dht11new.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Environment variables
+Environment=PYTHONUNBUFFERED=1
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits
+MemoryMax=100M
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

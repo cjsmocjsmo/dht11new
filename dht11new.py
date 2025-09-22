@@ -55,7 +55,9 @@ def insert_temperature_data(celsius, fahrenheit, humidity):
 instance = dht11.DHT11(pin=4)
 
 print("Starting temperature monitoring... Press Ctrl+C to stop")
-print("Reading every 15 minutes...")
+print("Sensor warming up...")
+time.sleep(2)  # Give DHT11 sensor 2 seconds to warm up and stabilize
+print("Reading every 5 minutes...")
 
 try:
     while True:
@@ -83,7 +85,7 @@ try:
         
         # Wait 15 minutes (900 seconds)
         print("Waiting 15 minutes for next reading...")
-        time.sleep(900)
+        time.sleep(300)
 
 except KeyboardInterrupt:
     print("\nMonitoring stopped by user")
