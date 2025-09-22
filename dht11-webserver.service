@@ -1,0 +1,33 @@
+[Unit]
+Description=DHT11 Temperature Web Server
+After=network.target dht11-monitor.service
+Wants=network.target
+Requires=dht11-monitor.service
+
+[Service]
+Type=simple
+User=picam
+Group=picam
+WorkingDirectory=/home/picam/dht11/dht11new
+ExecStart=/usr/bin/python3 /home/picam/dht11/dht11new/dht11server.py --port=8888 --host=0.0.0.0
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Environment variables
+Environment=PYTHONUNBUFFERED=1
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Resource limits
+MemoryMax=200M
+CPUQuota=75%
+
+# Network settings
+PrivateNetwork=false
+
+[Install]
+WantedBy=multi-user.target
