@@ -85,7 +85,7 @@ try:
         
         # Wait 15 minutes (900 seconds)
         print("Waiting 15 minutes for next reading...")
-        time.sleep(300)
+        time.sleep(30)
 
 except KeyboardInterrupt:
     print("\nMonitoring stopped by user")
