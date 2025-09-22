@@ -8,7 +8,7 @@ Type=simple
 User=picam
 Group=picam
 WorkingDirectory=/home/picam/dht11/dht11new
-ExecStart=/usr/bin/python3 /home/picam/dht11/dht11new/dht11new.py
+ExecStart=/home/picam/dht11/dht11new/bin/python /home/picam/dht11/dht11new/dht11new.py
 Restart=always
 RestartSec=10
 StandardOutput=journal
@@ -16,6 +16,7 @@ StandardError=journal
 
 # Environment variables
 Environment=PYTHONUNBUFFERED=1
+Environment=PATH=/home/picam/dht11/dht11new/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Security settings
 NoNewPrivileges=true
